@@ -40,7 +40,6 @@ def _row_profile(image, row_frac=0.5):
     return gray[row, :]
 
 def evaluate():
-    # ── Load test images (same pair used in Lab 00) ─────────────────────────
     sphinx = _resize_for_display(
         load_image(get_data_path("Great_Sphinx_of_Giza_-_20080716a.jpg"))
     )
@@ -51,7 +50,6 @@ def evaluate():
     viz = ResultsVisualizer()
     figs = []
 
-    # ── 1. Image grid ────────────────────────────────────────────────────────
     print("Building image grid...")
     figs.append(viz.image_grid(
         [sphinx, sacrecoeur],
@@ -59,7 +57,6 @@ def evaluate():
         suptitle="Lab 00C: Test Images",
     ))
 
-    # ── 2. Heatmap — FFT log-magnitude spectrum ─────────────────────────────
     print("Building heatmap...")
     figs.append(viz.heatmap(
         _fft_magnitude(sphinx),
@@ -67,7 +64,6 @@ def evaluate():
         colorscale="Viridis",
     ))
 
-    # ── 3. Line chart — horizontal intensity profile ────────────────────────
     print("Building line chart...")
     profile_sphinx = _row_profile(sphinx)
     profile_sacrecoeur = _row_profile(sacrecoeur)
